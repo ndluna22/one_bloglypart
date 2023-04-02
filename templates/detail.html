@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block title %}Create a user{% endblock %}
+
+{% block content %}
+
+<h1>{{user.id}}</h1>
+
+<div class="box1">
+  {% if user.image_url %}
+  <div class="profile">
+    <img
+      src="{{ user.image_url }}"
+      alt="{{ user.first_name }}{{ user.last_name }}"
+      class="userimage"
+    />
+  </div>
+  {% endif %}
+
+  <div class="profilename">
+    <h1>{{ user.first_name }}{{ user.last_name }}</h1>
+
+    <form>
+      <button
+        class="Btn"
+        formaction="/users/{{ user.id }}/edit"
+        formmethod="GET"
+      >
+        Edit
+      </button>
+      
+      <button
+        class="deleteBtn"
+        formaction="/users/{{ user.id }}/delete"
+        formmethod="POST">
+        Delete
+      </button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
